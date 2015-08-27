@@ -1,0 +1,25 @@
+---
+- name: add repository
+  get_url:
+    url: "https://packagecloud.io/install/repositories/grafana/stable/config_file.repo?os=CentOS&dist=6&source=script"
+    dest: /etc/yum.repos.d/grafana.repo
+  tags:
+    - grafana
+
+- name: install package
+  yum: name=grafana state=present
+  tags:
+    - grafana
+
+- name: write configuration
+  template: src=grafana.ini.j2 dest=/etc/grafana/grafana.ini
+  notify:
+    - restart grafana
+  tags:
+    - grafana
+
+- name: setup as startup service
+  service: name=grafana-server state=started enabled=yes
+  tags:
+    - grafana
+
