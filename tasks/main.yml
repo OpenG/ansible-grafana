@@ -11,3 +11,8 @@
   tags:
     - grafana
 
+- name: setup as startup service
+  service: name=grafana-server state=started enabled=yes
+  tags:
+    - grafana
+
