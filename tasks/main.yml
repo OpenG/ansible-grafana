@@ -11,6 +11,13 @@
   tags:
     - grafana
 
+- name: write configuration
+  template: src=grafana.ini.j2 dest=/etc/grafana/grafana.ini
+  notify:
+    - restart grafana
+  tags:
+    - grafana
+
 - name: setup as startup service
   service: name=grafana-server state=started enabled=yes
   tags:
