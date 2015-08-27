@@ -6,3 +6,8 @@
   tags:
     - grafana
 
+- name: install package
+  yum: name=grafana state=present
+  tags:
+    - grafana
+
