@@ -1,7 +1,7 @@
 ---
 - name: add repository
   get_url:
-    url: "https://packagecloud.io/install/repositories/grafana/stable/config_file.repo?os=CentOS&dist=6&source=script"
+    url: "https://packagecloud.io/install/repositories/grafana/stable/config_file.repo?os=CentOS&dist={{ ansible_distribution_major_version }}&source=script"
     dest: /etc/yum.repos.d/grafana.repo
   tags:
     - grafana
