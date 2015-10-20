@@ -6,6 +6,11 @@
   tags:
     - grafana
 
+- name: add rpm key
+  rpm_key: state=present key=https://packagecloud.io/gpg.key
+  tags:
+    - grafana
+
 - name: install package
   yum: name=grafana state=present
   tags:
